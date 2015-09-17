@@ -2,16 +2,12 @@
 
 By Robert Boily
 
-These scripts interact with a few uncommon, and very niche programs, and so their purpose warrants some explanation.
+These scripts read the following two inputs:
 
-This script was created to assist with running a Dungeons and Dragons: 4th Edition tabletop game. In this game, multiple people each play their own character, and each character has a multitude of powers and magic items. For convenience at the table, my group has been making cards for these powers and magic items - a card 63x88 mm in size, that contains the full rules text for one power or one magic item. Having such cards is essential for enjoying the game.
+1) A 4th Edition Dungeons and Dragons character file (.dnd4e) created by CBLoader. This is an XML file, typically ~1000 lines long.
 
-Before I made this script, we would tediously, manually type in all that rules text to an application called Magic Set Editor, which is an application for creating custom cards for a variety of games. Magic Set Editor stores its card databases in files with the extension '.mse-set'. These are actually .zip files; extracting them yields a single file, called 'set' (no file extension), which is in fact a .txt file, and contains all the information for the card, in a format custom-created for Magic Set Editor. 
+2) The database of rules elements used by CBLoader - typically called 'combined.dnd40'. This is also an XML file, typically ~600 000 lines long.
 
-We create our characters using CBLoader, an open-source extension of a Character Builder made by Wizards of the Coast, the company behind Dungeons and Dragons. CBLoader allows us to add our own custom content to the game, build characters easily, and share them electronically, all without flipping through several books.
+The 'pcm_interfaceX' series of scripts creates a database with cards for the character's powers, while the 'icmX' series of scripts does the same for the character's magic items. Both scripts should be considered to be at version '0.X', with X being the number in the script.
 
-CBLoader takes the original XML file from the Wizards of the Coast Character Builder, and combines it with several other XML files, called .part files, to create one combined database with all the rules elements in it - a file called 'combined.dnd40'. This is a 600 000 line XML file.
-
-When used to create a character, CBLoader stores the choices you've made in another XML file, with the extension .dnd4e. Depending on the complexity of your character, it will typically be up to a few thousand lines long.
-
-This script, in short, reads those two files - 'combined.dnd40' and '(MyCharacterName).dnd4e' - and produces a Magic Set Editor database with the extension .mse-set. The 'pcm_interfaceX' series of scripts creates a database with cards for the character's powers, while the 'icmX' series of scripts does the same for the character's magic items. Both scripts should be considered to be at version '0.X', with X being the number in the script.
+In both cases, the output is a .mse-set file for being read by Magic Set Editor, and used with Ander00's power card template (originally posted and available at http://www.enworld.org/forum/showthread.php?220953-Making-your-own-power-cards/page57&p=4274554&viewfull=1#post4274554 ). This .mse-set file is simply a .zip file containing a file called 'set' (no file extension), which in turn is a .txt file with the information for the cards.
